@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script>
+        // JavaScript for password matching validation on hover
+        document.addEventListener('DOMContentLoaded', function() {
+            var submitButton = document.querySelector('button[type="submit"]');
+            var newPassword = document.getElementById('newPassword');
+            var confirmPassword = document.getElementById('confirmPassword');
+            var passwordMismatch = document.getElementById('passwordMismatch');
+
+            submitButton.addEventListener('mouseover', function() {
+                if (newPassword.value !== confirmPassword.value) {
+                    passwordMismatch.style.display = 'block'; // Show error message
+                    submitButton.setAttribute('data-bs-original-title', 'Passwords do not match.');
+                    new bootstrap.Tooltip(submitButton); // Initialize Bootstrap tooltip
+                } else {
+                    passwordMismatch.style.display = 'none'; // Hide error message if passwords match
+                }
+            });
+
+            submitButton.addEventListener('mouseout', function() {
+                passwordMismatch.style.display = 'none'; // Hide error message when mouse leaves the button
+            });
+
+            // Prevent tooltip from closing when clicking outside of it
+            submitButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+    </script>
+ -->
+<body>
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">Forgot Password</div>
+					<div class="card-body">
+						<!-- Forgot Password Form -->
+						<form th:action="@{/forgot-newuser}" th:object="${forgotuser}" method="post">
+							<div class="mb-3">
+								<label for="email" class="form-label">Email</label> <input
+									type="email" th:field="${user.emailId}" class="form-control" id="email" name="email"
+									required>
+							</div>
+							<div class="mb-3">
+								<label for="newPassword" class="form-label">New Password</label>
+								<input type="password" class="form-control" th:field="${user.password}" id="newPassword" name="newPassword" required>
+							</div>
+							<div class="mb-3">
+								<label for="confirmPassword" class="form-label">Confirm
+									Password</label> <input type="password" class="form-control" th:field="${user.confirmPassword}"
+									id="confirmPassword" name="confirmPassword"  required>
+								<div class="text-danger" id="passwordMismatch"
+									style="display: none;">Passwords do not match.</div>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+						<!-- End Forgot Password Form -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
